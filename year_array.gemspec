@@ -35,5 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_dependency "activesupport"
-  spec.add_dependency 'coveralls', require: false
+  spec.add_development_dependency 'coveralls'
 end
