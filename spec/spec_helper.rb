@@ -1,5 +1,7 @@
 require "bundler/setup"
 require "year_array"
+require 'coveralls'
+Coveralls.wear!
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
