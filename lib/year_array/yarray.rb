@@ -55,6 +55,9 @@ module YearArray
       Yarray.new(ya1.year, arr: a)
     end
 
+    def any?(&block)
+      @arr.any?{|v| yield(v)}
+    end
 
     def raise_error_on_misalignment(other)
       raise MisalignmentError if !same_year?(other)

@@ -1,5 +1,4 @@
 RSpec.describe YearArray do
-  subject(:a) { Array.new([0,1,-2,5,-7,11,-13]) }
 
   context "basic initializer" do
     subject(:ya) { Yarray.new(2018) }
@@ -94,4 +93,19 @@ RSpec.describe YearArray do
     it { expect(ya3.arr.last).to eq(9.0) }
   end
 
+  it "has positive values" do
+    expect(Yarray.new(2018, value: 3.0).any?{|v| v>0}).to eq(true)
+  end
+
+  it "has negative values" do
+    expect(Yarray.new(2018, value: -25.0).any?{|v| v<0}).to eq(true)
+  end
+
+  it "doesn't has positive values" do
+    expect(Yarray.new(2018, value: -25.0).any?{|v| v>0}).to eq(false)
+  end
+
+  it "doesn't has negative values" do
+    expect(Yarray.new(2018, value: 5.0).any?{|v| v<0}).to eq(false)
+  end
 end
