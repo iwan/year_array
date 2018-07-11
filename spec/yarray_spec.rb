@@ -95,17 +95,21 @@ RSpec.describe YearArray do
 
   it "has positive values" do
     expect(Yarray.new(2018, value: 3.0).any?{|v| v>0}).to eq(true)
+    expect(Yarray.new(2018, value: 3.0).any_positive?).to eq(true)
   end
 
   it "has negative values" do
     expect(Yarray.new(2018, value: -25.0).any?{|v| v<0}).to eq(true)
+    expect(Yarray.new(2018, value: -25.0).any_negative?).to eq(true)
   end
 
   it "doesn't has positive values" do
     expect(Yarray.new(2018, value: -25.0).any?{|v| v>0}).to eq(false)
+    expect(Yarray.new(2018, value: -25.0).any_positive?).to eq(false)
   end
 
   it "doesn't has negative values" do
     expect(Yarray.new(2018, value: 5.0).any?{|v| v<0}).to eq(false)
+    expect(Yarray.new(2018, value: 5.0).any_negative?).to eq(false)
   end
 end

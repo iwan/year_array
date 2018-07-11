@@ -59,6 +59,14 @@ module YearArray
       @arr.any?{|v| yield(v)}
     end
 
+    def any_positive?
+      any?{|e| e>0.0}
+    end
+
+    def any_negative?
+      any?{|e| e<0.0}
+    end
+
     def raise_error_on_misalignment(other)
       raise MisalignmentError if !same_year?(other)
     end
