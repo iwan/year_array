@@ -6,6 +6,7 @@ module YearArray
     def initialize(year, value: 0.0, arr: [])
       @start_time = Time.new(year,1,1)
       nohiy = Yarray.hours_in_year(year)
+      arr = [] if arr.nil?
       arr = arr.first(nohiy)
       @arr = arr + Arr.new(nohiy-arr.size, value)
     end
