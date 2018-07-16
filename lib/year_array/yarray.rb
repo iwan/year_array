@@ -72,6 +72,9 @@ module YearArray
       raise MisalignmentError if !same_year?(other)
     end
 
+    def to_s
+      "start_time: #{start_time}, arr: [#{arr[0..6].join(', ')}, ..., #{arr.last}]"
+    end
   end
 end
 
