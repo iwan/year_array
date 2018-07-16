@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/iwan/year_array/badge.svg?branch=master)](https://coveralls.io/github/iwan/year_array?branch=master)
 
 
-It's basically a wrapper to an array in order to manage, do some calculation and check on 8760 (or 8784) hourly values related to a year.
+It's basically an array wrapper used to play (do some check and calculation) with 8760 (or 8784) hourly values related to a year.
 
 ## Installation
 
