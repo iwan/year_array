@@ -19,6 +19,31 @@ module YearArray
       @start_time.year
     end
 
+    def add(other)
+      raise_error_on_misalignment other
+      @arr.each_with_index{|v, i| @arr[i]=v+other.arr[i]}
+      self
+    end
+
+    def subtract(other)
+      raise_error_on_misalignment other
+      @arr.each_with_index{|v, i| @arr[i]=v-other.arr[i]}
+      self
+    end
+
+    def multiply(other)
+      raise_error_on_misalignment other
+      @arr.each_with_index{|v, i| @arr[i]=v*other.arr[i]}
+      self
+    end
+
+    def divide(other)
+      raise_error_on_misalignment other
+      @arr.each_with_index{|v, i| @arr[i]=v/other.arr[i]}
+      self
+    end
+
+
     def +(other)
       raise_error_on_misalignment other
       a = Arr.new(size){ |i| arr[i]+other.arr[i] }
