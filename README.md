@@ -4,9 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/iwan/year_array/badge.svg?branch=master)](https://coveralls.io/github/iwan/year_array?branch=master)
 
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/year_array`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+It's basically a wrapper to an array in order to manage, do some calculation and check on 8760 (or 8784) hourly values related to a year.
 
 ## Installation
 
@@ -26,7 +24,61 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Initialize
+
+```ruby
+arr = Yarray.new(2018)
+arr.to_s   => "start_time: 2018-01-01 00:00:00 +0100, arr: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ..., 0.0]"
+```
+will initialize the array to zero.
+
+Otherwise pass the init value:
+```ruby
+arr = Yarray.new(2018, value: 1.0)
+arr.to_s   => "start_time: 2018-01-01 00:00:00 +0100, arr: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ..., 0.0]"
+```
+You can also pass an init array:
+```ruby
+arr = Yarray.new(2018, arr: [0.0, 1.0, 2, 3])
+arr.to_s   => "start_time: 2018-01-01 00:00:00 +0100, arr: [0.0, 1.0, 2.0, 3.0, 0.0, 0.0, 0.0, ..., 0.0]"
+```
+The array will be truncated or filled with zero values in order to reach the correct number of hours in year.
+
+### Functions
+```ruby
+ya1 = Yarray.new(2018, value: 1.0)
+ya2 = Yarray.new(2018, value: 2.0)
+
+ya1.size   # => 8760
+ya1.year   # => 2018
+
+# Operations on each element of array
+
+# The result will be stored in a new yarray object (more memory expensive):
+ya1 + ya2
+ya1 - ya2
+ya1 * ya2
+ya1 / ya2
+
+# The operation will be computed in the caller ya1:
+ya1.add(ya2)
+ya1.subtract(ya2)
+ya1.multiply(ya2)
+ya1.divide(ya2)
+
+
+Yarray.min(ya1, ya2)   # return a Yarray object where each value is the minimum between value of ya1 and ya2
+Yarray.max(ya1, ya2)   # return a Yarray object where each value is the maximum between value of ya1 and ya2
+
+ya1.any_positive?
+ya1.any_negative?
+
+ya1.any do |v|
+  v > 100
+end
+
+```
+
 
 ## Development
 
