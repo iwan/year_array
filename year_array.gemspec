@@ -9,19 +9,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Iwan Buetti"]
   spec.email         = ["iwan.buetti@gmail.com"]
 
-  spec.summary       = "Just a class to manage array of hourly numerical values related to a year"
+  spec.summary       = "Just an array wrapper to manage 8760 (or 8784) hourly values related to a year"
   # spec.description   = %q{TODO: Write a longer description or delete this line.}
   spec.homepage      = "https://github.com/iwan/year_array"
   spec.license       = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
@@ -36,4 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_dependency "activesupport", "~> 4.2"
   spec.add_development_dependency 'coveralls', "~> 0.8"
+  spec.add_development_dependency 'memory_profiler', "~> 0.9"
 end
