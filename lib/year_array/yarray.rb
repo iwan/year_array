@@ -3,9 +3,10 @@ module YearArray
     include TimeHelpers
     attr_reader :start_time, :arr
 
-    def initialize(year, value: 0.0, arr: [])
-      @start_time = Time.new(year,1,1)
-      nohiy = Yarray.hours_in_year(year)
+    def initialize(year, value: 0.0, arr: [], zone: "Rome")
+      Time.zone = zone
+      @start_time = Time.zone.parse("#{year}-01-01")
+      nohiy = Yarray.hours_in_year(year, zone: zone)
       arr = [] if arr.nil?
       arr = arr.first(nohiy)
       @arr = arr + Arr.new(nohiy-arr.size, value)

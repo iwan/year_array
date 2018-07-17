@@ -1,16 +1,16 @@
 module YearArray
   module TimeHelpers
     module ClassMethods
-      def hours_in_year(year)
-        hours_in_interval(:year, year)
+      def hours_in_year(year, zone: "Rome")
+        hours_in_interval(:year, year, 1, 1, zone)
       end
 
-      def hours_in_month(year, month)
-        hours_in_interval(:month, year, month)
+      def hours_in_month(year, month, zone: "Rome")
+        hours_in_interval(:month, year, month, 1, zone)
       end
 
-      def hours_in_day(year, month, day)
-        hours_in_interval(:day, year, month, day)
+      def hours_in_day(year, month, day, zone: "Rome")
+        hours_in_interval(:day, year, month, day, zone)
       end
 
       def hours_between(t1, t2)
@@ -19,8 +19,9 @@ module YearArray
 
       private
 
-      def hours_in_interval(interval, year, month=1, day=1)
-        t1 = Time.new(year, month, day)
+      def hours_in_interval(interval, year, month=1, day=1, zone)
+        Time.zone = zone
+        t1 = Time.zone.parse("#{year}-#{month}-#{day}")
         t2 = t1+1.send(interval)
         hours_between(t1, t2)
       end
