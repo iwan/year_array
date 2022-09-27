@@ -1,4 +1,6 @@
-require "bundler/setup"
+# frozen_string_literal: true
+
+# require "bundler/setup"
 require "year_array"
 require 'coveralls'
 Coveralls.wear!
